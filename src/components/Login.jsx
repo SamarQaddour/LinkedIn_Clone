@@ -1,11 +1,19 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
-const Login = () => {
+import {signInAPI} from '../redux/actions/index'
+import {connect} from 'react-redux'
+import { useNavigate } from "react-router-dom";
+const Login = (props) => {
+    const navigate = useNavigate();
+    useEffect(() => {
+        props.user && navigate("/home");
+        console.log(props.user, 'userrrrrrr')
+    }, [props.user]);
   return(
      <Container>
          <Nav>
              <a href="/index.html">
-                 <img src="/public/image/login-logo.svg"/>
+                 <img src="/image/login-logo.svg"/>
              </a>
              <div>
                  <Join><a>Join now</a></Join>
@@ -16,11 +24,11 @@ const Login = () => {
          <Section>
              <Hero>
                  <h1>Welcome to your perfessional community</h1>
-                 <img src='/public/image/login-hero.svg' />
+                 <img src='/image/login-hero.svg' />
              </Hero>
              <Form>
-                 <Google onclick={()=> props.signIn()}>
-                     <img src="/public/image/google.svg" />
+                 <Google onClick={() => props.signIn()}>
+                     <img src="/image/google.svg" />
                      Sign in with Google
                  </Google>
              </Form>
@@ -151,5 +159,14 @@ const Google = styled.button`
     color: rgba(0, 0, 0, 0.75);
   }
 `;
-
-export  default  Login
+const mapStateToProps = (state) => {
+return {
+    user: state.userState.user
+}
+};
+const mapDispatchToProps = (dispatch) => {
+return{
+    signIn : () => dispatch(signInAPI())
+}
+};
+export  default  connect(mapStateToProps,mapDispatchToProps)(Login)
