@@ -23,24 +23,34 @@ const Header = (props) => {
                 <Nav>
                     <NavListWrap>
                         <NavList className="active">
-                            <a href='/home'>Home</a>
-                            <img src='/image/nav-home.svg' alt='' />
+                            <a>
+                                <span>Home</span>
+                                <img src='/image/nav-home.svg' alt='' />
+                            </a>
                         </NavList>
                         <NavList>
-                            <a href='/network'>My Network</a>
-                            <img src='/image/nav-network.svg' alt='' />
+                          <a>
+                              <span>My Network</span>
+                              <img src='/image/nav-network.svg' alt='' />
+                          </a>
                         </NavList>
                         <NavList>
-                            <a href='message'>Messages</a>
-                            <img src='/image/nav-messaging.svg' alt=''  />
+                          <a>
+                              <span>Messages</span>
+                              <img src='/image/nav-messaging.svg' alt=''  />
+                          </a>
                         </NavList>
                         <NavList>
-                            <a href='/job'>Job</a>
-                            <img src='/public/image/nav-jobs.svg' alt=''/>
+                          <a>
+                              <span>Job</span>
+                              <img src='/public/image/nav-jobs.svg' alt=''/>
+                          </a>
                         </NavList>
                         <NavList>
-                            <a href='/notifications'>Notifications</a>
-                            <img src='/image/nav-network.svg' />
+                           <a>
+                               <span>Notifications</span>
+                               <img src='/image/nav-network.svg' />
+                           </a>
                         </NavList>
                         <User>
                             <a>
@@ -161,6 +171,7 @@ const NavListWrap = styled.ul`
 const NavList = styled.li`
   display: flex;
   align-items: center;
+
   a {
     align-items: center;
     background: transparent;
@@ -174,6 +185,7 @@ const NavList = styled.li`
     min-width: 80px;
     position: relative;
     text-decoration: none;
+   
     span {
       color: rgba(0, 0, 0, 0.6);
       display: flex;
